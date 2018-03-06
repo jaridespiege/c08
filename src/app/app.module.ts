@@ -10,7 +10,22 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+ 
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { UserServiceProvider } from '../providers/user-service/user-service';
+
+var config = {
+  apiKey: "AIzaSyAwZN2cGlKdOdi3ziXboaFKMJBXwMnmlcE",
+    authDomain: "c08les-693df.firebaseapp.com",
+    databaseURL: "https://c08les-693df.firebaseio.com",
+    projectId: "c08les-693df",
+    storageBucket: "",
+    messagingSenderId: "403667197748"
+  };
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +37,10 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,8 +53,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserServiceProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
