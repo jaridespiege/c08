@@ -36,6 +36,14 @@ export class RestaurantPage {
   
   
   )
-  }
+ //let store={
+ //   name:"New pizza store"
+ // }
+ // this.db.update("0",store);
+ 
+
+
+
+}
 
 }
