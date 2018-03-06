@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { RegisterPage } from '../register/register';
+import { TabsPage } from '../tabs/tabs';
+import { RestaurantPage } from '../restaurant/restaurant';
 
 /**
  * Generated class for the LoginPage page.
@@ -34,9 +36,15 @@ export class LoginPage {
   }
 
 login() {
-this.authService.login(this.user.email,this.user.password);
+this.authService.login(this.user.email,this.user.password)
+.then (() => {
+  if (this.authService.isLoggedIn) {
+    this.navCtrl.setRoot(RestaurantPage);
+  }
+})
 
 }
+
 
 register() {
   this.navCtrl.push(RegisterPage);
